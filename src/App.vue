@@ -1,39 +1,27 @@
 <template>
   <div id="app">
-    <div id="flex1">
-      <GsapDemo1 />
+    <transition name="slide" mode="out-in">
+      <router-view id="flex1" />
+    </transition>
+    <div id="footer">
+      <router-link to="/">Home</router-link>|
+      <router-link to="/demo1">Demo1</router-link>|
+      <router-link to="/demo2">Demo 2</router-link>
     </div>
-    <Footer />
   </div>
 </template>
 
-<script>
-import GsapDemo1 from "./components/GsapDemo1.vue";
-import Footer from "./components/Footer.vue";
-
-export default {
-  name: "App",
-  components: {
-    GsapDemo1,
-    Footer
-  }
-};
-</script>
-
 <style lang="scss">
 @import "@/styles/colors.scss";
-
 html,
 body {
   height: 100%;
   margin: 0;
 }
-
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  font-family: Mali, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  color: $vue-text;
   background-color: $alabaster;
   font-size: 1.8em;
   display: flex;
@@ -43,6 +31,37 @@ body {
     flex: 1;
     padding-top: 1em;
   }
+  #footer {
+    padding: 0.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid $vue-gray;
+    height: 1em;
+    font-size: 0.8em;
+    a {
+      margin: 1em;
+      font-weight: 300;
+      color: $vue-gray;
+      text-decoration: none;
+      &.router-link-exact-active {
+        color: $b1;
+      }
+    }
+    img {
+      width: 1em;
+    }
+  }
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: opacity 0.3s;
+}
+
+.slide-enter,
+.slide-leave-to {
+  opacity: 0;
 }
 
 @media screen and (max-width: 768px) {
@@ -51,3 +70,4 @@ body {
   }
 }
 </style>
+ 

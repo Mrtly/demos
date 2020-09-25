@@ -3,32 +3,32 @@
     <div id="frame">
       <div id="area">
         <div id="topic">
-          <div id="f0">Lorem Hipsum Kombucha.</div>
+          <div id="title">Lorem Hipsum Kombucha.</div>
         </div>
         <div id="underline">
           <hr id="line" />
         </div>
         <div id="item1">
-          <div id="f1_parent" class="bold">
+          <div id="text1" class="bold">
             <div class="grid">
               <span>□</span>
-              <span id="f1">Chia pop-up tumblr retro enim.</span>
+              <span>Chia pop-up tumblr retro enim.</span>
             </div>
           </div>
         </div>
         <div id="item2">
-          <div id="f2_parent" class="bold">
+          <div id="text2" class="bold">
             <div class="grid">
               <span>□</span>
-              <span id="f2">Shaman dreamcatcher portland banh mi hot chicken.</span>
+              <span>Shaman dreamcatcher portland banh mi hot chicken.</span>
             </div>
           </div>
         </div>
         <div id="item3">
-          <div id="f3_parent" class="bold">
+          <div id="text3" class="bold">
             <div class="grid">
               <span>□</span>
-              <span id="f3">
+              <span>
                 Polaroid craft beer twee chicharrones ethical hut.
                 Wolf moon squid hella blue bottle fam pickled retro lomo.
               </span>
@@ -56,7 +56,6 @@ import { gsap, Cubic } from "gsap";
 import Vue from "vue";
 import Vuex from "vuex";
 Vue.use(Vuex);
-
 const store = new Vuex.Store({
   state: {
     maxSteps: 4,
@@ -65,6 +64,7 @@ const store = new Vuex.Store({
     dur: 2
   }
 });
+gsap.set("#area", { opacity: 0 });
 
 // eslint-disable-next-line
 window.addEventListener("load", function(event) {
@@ -74,19 +74,16 @@ window.addEventListener("load", function(event) {
   gsap.set("#item3", { opacity: 0 });
   console.log("init");
 });
-
 export default {
-  name: "demo1",
+  name: "GsapDemo1",
   store,
   methods: {
     start: function() {
-      gsap.set("#area", { opacity: 0 });
-      console.log("start");
       store.state.started = true;
-      console.log("In - started = true");
+      console.log("started = true");
       gsap.set("#area", { opacity: 1 });
       gsap.fromTo(
-        "#f0",
+        "#title",
         { opacity: 0 },
         {
           delay: 0.1,
@@ -96,7 +93,7 @@ export default {
         }
       );
       gsap.fromTo(
-        "#f0",
+        "#title",
         { x: -50 },
         { delay: 0.1, duration: 1, x: 0, ease: Cubic.EaseOut }
       );
@@ -112,7 +109,6 @@ export default {
         this.stop();
         return;
       }
-
       if (store.state.started) {
         let item1 = document.getElementById("item1");
         let item2 = document.getElementById("item2");
@@ -127,7 +123,7 @@ export default {
             ease: Cubic.EaseOut
           });
           gsap.fromTo(
-            "#f1_parent",
+            "#text1",
             { clipPath: "inset(0% 0% 100% 0%)" }, //might also need webkitClipPath for FF
             {
               clipPath: "inset(0% 0% 0% 0%)",
@@ -146,7 +142,7 @@ export default {
             ease: Cubic.EaseOut
           });
           gsap.fromTo(
-            "#f2_parent",
+            "#text2",
             { clipPath: "inset(0% 0% 100% 0%)" },
             {
               clipPath: "inset(0% 0% 0% 0%)",
@@ -166,7 +162,7 @@ export default {
             ease: Cubic.EaseOut
           });
           gsap.fromTo(
-            "#f3_parent",
+            "#text3",
             { clipPath: "inset(0% 0% 100% 0%)" },
             {
               clipPath: "inset(0% 0% 0% 0%)",
@@ -183,21 +179,21 @@ export default {
       }
     },
     stop: function() {
-      gsap.to("#f3_parent", {
+      gsap.to("#text3", {
         clipPath: "inset(0% 0% 100% 0%)",
         opacity: 0.5,
         duration: 0.3,
         delay: 0.1,
         ease: Cubic.EaseOut
       });
-      gsap.to("#f2_parent", {
+      gsap.to("#text2", {
         clipPath: "inset(0% 0% 100% 0%)",
         opacity: 0.5,
         duration: 0.4,
         delay: 0.15,
         ease: Cubic.EaseOut
       });
-      gsap.to("#f1_parent", {
+      gsap.to("#text1", {
         clipPath: "inset(0% 0% 100% 0%)",
         opacity: 0.5,
         duration: 0.5,
@@ -210,7 +206,7 @@ export default {
         y: "0em",
         ease: "Cubic.EaseOut"
       });
-      gsap.to("#f0", {
+      gsap.to("#title", {
         delay: 0.4,
         duration: 1,
         x: -50,
@@ -237,8 +233,8 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/styles/colors.scss";
-
 #container {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   #frame {
     padding: 1.5em;
     margin: 0 auto;
@@ -292,7 +288,6 @@ export default {
     }
   }
 }
-
 @media screen and (max-width: 768px) {
   #buttons {
     width: 100vw !important;
