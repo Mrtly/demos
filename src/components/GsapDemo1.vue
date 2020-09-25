@@ -38,9 +38,15 @@
       </div>
     </div>
     <div id="buttons">
-      <button v-on:click="start">start</button>
-      <button v-on:click="next">next</button>
-      <button v-on:click="stop">stop</button>
+      <div>
+        <button v-on:click="start">start</button>
+        <button v-on:click="next">next</button>
+        <button v-on:click="stop">stop</button>
+      </div>
+      <div id="restart">
+        <i>"oh no, it is doing weird stuff now!"</i> →
+        <button v-on:click="restart">restart</button>
+      </div>
     </div>
   </div>
 </template>
@@ -62,25 +68,19 @@ const store = new Vuex.Store({
 
 // eslint-disable-next-line
 window.addEventListener("load", function(event) {
-  function init() {
-    gsap.set("#area", { opacity: 0 });
-    gsap.set("#item1", { opacity: 0 });
-    gsap.set("#item2", { opacity: 0 });
-    gsap.set("#item3", { opacity: 0 });
-    console.log("init");
-  }
-  init();
+  gsap.set("#area", { opacity: 0 });
+  gsap.set("#item1", { opacity: 0 });
+  gsap.set("#item2", { opacity: 0 });
+  gsap.set("#item3", { opacity: 0 });
+  console.log("init");
 });
 
 export default {
   name: "demo1",
   store,
   methods: {
-    dosomething: function() {
-      console.log(store.state.curSteps);
-      alert(store.state.curSteps);
-    },
     start: function() {
+      gsap.set("#area", { opacity: 0 });
       console.log("start");
       store.state.started = true;
       console.log("In - started = true");
@@ -183,39 +183,27 @@ export default {
       }
     },
     stop: function() {
-      gsap.fromTo(
-        "#f3_parent",
-        { clipPath: "inset(0% 0% 0% 0%)", opacity: 1 },
-        {
-          clipPath: "inset(0% 0% 100% 0%)",
-          opacity: 0.5,
-          duration: 0.3,
-          delay: 0.1,
-          ease: Cubic.EaseOut
-        }
-      );
-      gsap.fromTo(
-        "#f2_parent",
-        { clipPath: "inset(0% 0% 0% 0%)", opacity: 1 },
-        {
-          clipPath: "inset(0% 0% 100% 0%)",
-          opacity: 0.5,
-          duration: 0.4,
-          delay: 0.15,
-          ease: Cubic.EaseOut
-        }
-      );
-      gsap.fromTo(
-        "#f1_parent",
-        { clipPath: "inset(0% 0% 0% 0%)", opacity: 1 },
-        {
-          clipPath: "inset(0% 0% 100% 0%)",
-          opacity: 0.5,
-          duration: 0.5,
-          delay: 0.2,
-          ease: Cubic.EaseOut
-        }
-      );
+      gsap.to("#f3_parent", {
+        clipPath: "inset(0% 0% 100% 0%)",
+        opacity: 0.5,
+        duration: 0.3,
+        delay: 0.1,
+        ease: Cubic.EaseOut
+      });
+      gsap.to("#f2_parent", {
+        clipPath: "inset(0% 0% 100% 0%)",
+        opacity: 0.5,
+        duration: 0.4,
+        delay: 0.15,
+        ease: Cubic.EaseOut
+      });
+      gsap.to("#f1_parent", {
+        clipPath: "inset(0% 0% 100% 0%)",
+        opacity: 0.5,
+        duration: 0.5,
+        delay: 0.2,
+        ease: Cubic.EaseOut
+      });
       gsap.to("#line", {
         delay: 0.2,
         duration: 0.7,
@@ -239,6 +227,9 @@ export default {
       gsap.set("#area", { delay: 4, duration: 1, opacity: 0 });
       store.state.curSteps = 0;
       console.log("stopped and steps at: " + store.state.curSteps);
+    },
+    restart: function() {
+      location.reload();
     }
   }
 };
@@ -263,14 +254,20 @@ export default {
     }
   }
   #buttons {
-    text-align: center;
+    width: 70vw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1em;
     button {
       font-family: Avenir, Helvetica, Arial, sans-serif;
-      color: $vue-gray;
+      color: $alabaster;
       font-weight: 500;
       letter-spacing: 2px;
       font-size: 0.7em;
-      padding: 0.2em 0.5em;
+      padding: 0.2em 0.6em;
       margin: 0.4em;
       border: none;
       box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
@@ -285,6 +282,22 @@ export default {
         background-color: $b3;
       }
     }
+    #restart {
+      font-size: 0.6em;
+      button {
+        font-size: 0.8em;
+        padding: 0.1em 0.4em;
+        background-color: $b4;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #buttons {
+    width: 100vw !important;
+    flex-direction: column !important;
+    height: 5em;
   }
 }
 </style>
