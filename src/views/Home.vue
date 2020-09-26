@@ -18,7 +18,14 @@ window.addEventListener("load", function(event) {
   gsap.fromTo(
     ".link",
     { scale: 0, opacity: 0 },
-    { scale: 1, opacity: 1, duration: 1, stagger: 0.2, ease: Cubic.easeOut }
+    {
+      scale: 1,
+      delay: 1,
+      opacity: 1,
+      duration: 1,
+      stagger: 0.2,
+      ease: Cubic.easeOut
+    }
   );
 });
 
@@ -36,7 +43,6 @@ export default {
   padding: 1.5em;
   margin: 0 auto;
   .link {
-    opacity: 0;
     margin: 1em;
     display: inline-block;
     a {
