@@ -36,6 +36,7 @@ export default {
   padding: 1.5em;
   margin: 0 auto;
   .link {
+    opacity: 0;
     margin: 1em;
     display: inline-block;
     a {
