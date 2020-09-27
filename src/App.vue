@@ -5,8 +5,9 @@
     </transition>
     <div id="footer">
       <router-link to="/">Home</router-link>|
-      <router-link to="/demo1">Demo1</router-link>|
-      <router-link to="/demo2">Demo 2</router-link>
+      <router-link to="/demo1">Demo 1</router-link>|
+      <router-link to="/demo2">Demo 2</router-link>|
+      <router-link to="/demo3">Demo 3</router-link>
     </div>
   </div>
 </template>
