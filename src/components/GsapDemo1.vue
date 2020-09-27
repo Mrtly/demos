@@ -1,231 +1,108 @@
+
+
 <template>
   <div id="container">
     <div id="frame">
-      <div id="area">
-        <div id="topic">
-          <div id="title">Lorem Hipsum Kombucha.</div>
+      <div id="picsum" class="grid">
+        <img class="gsap1" src="https://picsum.photos/150/?random=1" />
+        <img class="gsap1" src="https://picsum.photos/150/?random=2" />
+        <img class="gsap1" src="https://picsum.photos/150/?random=3" />
+        <img class="gsap1" src="https://picsum.photos/150/?random=4" />
+        <img class="gsap1" src="https://picsum.photos/150/?random=5" />
+        <img class="gsap1" src="https://picsum.photos/150/?random=6" />
+        <img class="gsap1" src="https://picsum.photos/150/?random=7" />
+        <img class="gsap1" src="https://picsum.photos/150/?random=8" />
+        <img class="gsap1" src="https://picsum.photos/150/?random=9" />
+        <img class="gsap1" src="https://picsum.photos/150/?random=10" />
+        <img class="gsap1" src="https://picsum.photos/150/?random=11" />
+        <img class="gsap1" src="https://picsum.photos/150/?random=12" />
+      </div>
+
+      <div id="right">
+        <div class="crcls">
+          <div class="circle" id="c1"></div>
+          <div class="circle" id="c2"></div>
+          <div class="circle" id="c3"></div>
         </div>
-        <div id="underline">
-          <hr id="line" />
+        <div id="text">
+          <p>this fab gsap and picsum doodle lorem hipsum kombucha whatever, schlitz humblebrag selfies wolf snackwave shabby chic. Sartorial synth vexillologist fanny pack adaptogen dreamcatcher pinterest.</p>
         </div>
-        <div id="item1">
-          <div id="text1" class="bold">
-            <div class="grid">
-              <span>□</span>
-              <span>Chia pop-up tumblr retro enim.</span>
-            </div>
-          </div>
-        </div>
-        <div id="item2">
-          <div id="text2" class="bold">
-            <div class="grid">
-              <span>□</span>
-              <span>Shaman dreamcatcher portland banh mi hot chicken.</span>
-            </div>
-          </div>
-        </div>
-        <div id="item3">
-          <div id="text3" class="bold">
-            <div class="grid">
-              <span>□</span>
-              <span>
-                Polaroid craft beer twee chicharrones ethical hut.
-                Wolf moon squid hella blue bottle fam pickled retro lomo.
-              </span>
-            </div>
-          </div>
-        </div>
+        <hr />
       </div>
     </div>
-    <div id="buttons">
-      <div>
-        <button v-on:click="start">start</button>
-        <button v-on:click="next">next</button>
-        <button v-on:click="stop">stop</button>
-      </div>
-      <div id="restart">
-        <i>"oh no, it is doing weird stuff now!"</i> →
-        <button v-on:click="restart">restart</button>
-      </div>
-    </div>
+    <button v-on:click="start">go!</button>
   </div>
 </template>
 
 <script>
-import { gsap, Cubic } from "gsap";
-import Vue from "vue";
-import Vuex from "vuex";
-Vue.use(Vuex);
-const store = new Vuex.Store({
-  state: {
-    maxSteps: 4,
-    curSteps: 1,
-    started: false,
-    dur: 2
-  }
-});
-gsap.set("#area", { opacity: 0 });
+import { gsap } from "gsap";
 
 // eslint-disable-next-line
 window.addEventListener("load", function(event) {
-  gsap.set("#area", { opacity: 0 });
-  gsap.set("#item1", { opacity: 0 });
-  gsap.set("#item2", { opacity: 0 });
-  gsap.set("#item3", { opacity: 0 });
-  console.log("init");
+  gsap.from(".gsap1", {
+    duration: 1,
+    y: -100,
+    opacity: 0,
+    stagger: 0.2,
+    ease: "expo.out"
+  });
+  gsap.from("#text", {
+    delay: 1,
+    duration: 2,
+    y: 100,
+    opacity: 0,
+    ease: "bounce.out"
+  });
+  gsap.from(".circle", {
+    delay: 1.5,
+    duration: 2,
+    y: 50,
+    opacity: 0,
+    stagger: 0.5,
+    ease: "expo.out"
+  });
+  gsap.from("hr", {
+    delay: 2,
+    duration: 2,
+    y: 100,
+    opacity: 0,
+    ease: "expo.out"
+  });
 });
 export default {
-  name: "GsapDemo1",
-  store,
+  name: "GsapDemo2",
+
   methods: {
     start: function() {
-      store.state.started = true;
-      console.log("started = true");
-      gsap.set("#area", { opacity: 1 });
-      gsap.fromTo(
-        "#title",
-        { opacity: 0 },
-        {
-          delay: 0.1,
-          duration: store.state.dur - 0.2,
-          opacity: 1,
-          ease: Cubic.EaseOut
-        }
-      );
-      gsap.fromTo(
-        "#title",
-        { x: -50 },
-        { delay: 0.1, duration: 1, x: 0, ease: Cubic.EaseOut }
-      );
-      gsap.fromTo(
-        "#line",
-        { x: -50, opacity: 0 },
-        { delay: 1, opacity: 1, duration: 1, x: 0, ease: Cubic.EaseOut }
-      );
-    },
-    next: function() {
-      if (store.state.curSteps >= store.state.maxSteps) {
-        console.log("maxed steps! stopping");
-        this.stop();
-        return;
-      }
-      if (store.state.started) {
-        let item1 = document.getElementById("item1");
-        let item2 = document.getElementById("item2");
-        let item3 = document.getElementById("item3");
-        console.log("Executing Next");
-        if (store.state.curSteps == 1) {
-          gsap.set(item1, { opacity: 1 });
-          let lineheight = item1.offsetHeight + 20;
-          gsap.to("#line", {
-            duration: 1,
-            y: lineheight,
-            ease: Cubic.EaseOut
-          });
-          gsap.fromTo(
-            "#text1",
-            { clipPath: "inset(0% 0% 100% 0%)" }, //might also need webkitClipPath for FF
-            {
-              clipPath: "inset(0% 0% 0% 0%)",
-              duration: 0.85,
-              ease: Cubic.EaseOut
-            }
-          );
-        }
-        if (store.state.curSteps == 2) {
-          gsap.set(item2, { opacity: 1 });
-          let lineheight = item1.offsetHeight + item2.offsetHeight + 35;
-          gsap.to("#line", {
-            delay: 0,
-            duration: 1,
-            y: lineheight,
-            ease: Cubic.EaseOut
-          });
-          gsap.fromTo(
-            "#text2",
-            { clipPath: "inset(0% 0% 100% 0%)" },
-            {
-              clipPath: "inset(0% 0% 0% 0%)",
-              duration: 0.85,
-              ease: Cubic.EaseOut
-            }
-          );
-        }
-        if (store.state.curSteps == 3) {
-          gsap.set(item3, { opacity: 1 });
-          let lineheight =
-            item3.offsetHeight + item1.offsetHeight + item2.offsetHeight + 45;
-          gsap.to("#line", {
-            delay: 0,
-            duration: 1,
-            y: lineheight,
-            ease: Cubic.EaseOut
-          });
-          gsap.fromTo(
-            "#text3",
-            { clipPath: "inset(0% 0% 100% 0%)" },
-            {
-              clipPath: "inset(0% 0% 0% 0%)",
-              duration: 0.85,
-              ease: Cubic.EaseOut
-            }
-          );
-        }
-        store.state.curSteps++;
-        console.log(store.state.curSteps);
-      } else {
-        console.log("Starting");
-        this.start();
-      }
-    },
-    stop: function() {
-      gsap.to("#text3", {
-        clipPath: "inset(0% 0% 100% 0%)",
-        opacity: 0.5,
-        duration: 0.3,
-        delay: 0.1,
-        ease: Cubic.EaseOut
-      });
-      gsap.to("#text2", {
-        clipPath: "inset(0% 0% 100% 0%)",
-        opacity: 0.5,
-        duration: 0.4,
-        delay: 0.15,
-        ease: Cubic.EaseOut
-      });
-      gsap.to("#text1", {
-        clipPath: "inset(0% 0% 100% 0%)",
-        opacity: 0.5,
-        duration: 0.5,
-        delay: 0.2,
-        ease: Cubic.EaseOut
-      });
-      gsap.to("#line", {
-        delay: 0.2,
-        duration: 0.7,
-        y: "0em",
-        ease: "Cubic.EaseOut"
-      });
-      gsap.to("#title", {
-        delay: 0.4,
+      gsap.from(".gsap1", {
         duration: 1,
-        x: -50,
+        y: -100,
         opacity: 0,
-        ease: "back.in(2)"
+        stagger: 0.2,
+        ease: "expo.out"
       });
-      gsap.to("#line", {
-        delay: 0.4,
-        duration: 1,
-        x: -50,
+      gsap.from("#text", {
+        delay: 1,
+        duration: 2,
+        y: 100,
         opacity: 0,
-        ease: "back.in(2)"
+        ease: "bounce.out"
       });
-      gsap.set("#area", { delay: 4, duration: 1, opacity: 0 });
-      store.state.curSteps = 0;
-      console.log("stopped and steps at: " + store.state.curSteps);
-    },
-    restart: function() {
-      location.reload();
+      gsap.from(".circle", {
+        delay: 1.5,
+        duration: 2,
+        y: 50,
+        opacity: 0,
+        stagger: 0.5,
+        ease: "expo.out"
+      });
+      gsap.from("hr", {
+        delay: 2,
+        duration: 2,
+        y: 100,
+        opacity: 0,
+        ease: "expo.out"
+      });
     }
   }
 };
@@ -233,66 +110,85 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/styles/colors.scss";
+
 #container {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  text-align: center;
   #frame {
-    padding: 1.5em;
+    padding: 1em;
     margin: 0 auto;
-    width: 70vw;
-    height: 60vh;
+    width: 80vw;
+    height: 70vh;
     border: 1px solid $vue-gray;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
-    .grid {
-      display: inline-grid;
-      grid-template-columns: 1fr auto;
-      column-gap: 1em;
-      margin-bottom: 0.5em;
+    display: flex;
+    align-items: flex-start;
+    // margin: 2em 1em;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-gap: 0.3em;
+    row-gap: 0.5em;
+    width: 100%;
+    max-width: 50vw;
+    margin: 0 auto;
+    img {
+      border-radius: 3px;
+      box-shadow: 0 0 5px #929094;
     }
   }
-  #buttons {
-    width: 70vw;
-    margin: 0 auto;
+
+  #right {
+    height: 100%;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    font-size: 1em;
-    button {
-      font-family: Avenir, Helvetica, Arial, sans-serif;
-      color: $alabaster;
-      font-weight: 500;
+    justify-content: center;
+    margin-right: 1em;
+    margin-left: 1em;
+
+    #text {
+      font-family: Chelsea Market;
+      font-size: 0.8em;
       letter-spacing: 2px;
-      font-size: 0.7em;
-      padding: 0.2em 0.6em;
-      margin: 0.4em;
-      border: none;
-      box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
-      cursor: pointer;
+      line-height: 1.5em;
+    }
+    .circle {
+      height: 2em;
+      width: 2em;
+      box-shadow: 0 0 5px #929094;
+      border-radius: 50%;
+      display: inline-block;
+      margin: 0.6em;
       &:nth-child(1) {
-        background-color: $b1;
+        background-color: #a63c06;
       }
       &:nth-child(2) {
-        background-color: $b2;
+        background-color: #c36f09;
       }
       &:nth-child(3) {
-        background-color: $b3;
+        background-color: #eeba0b;
       }
     }
-    #restart {
-      font-size: 0.6em;
-      button {
-        font-size: 0.8em;
-        padding: 0.1em 0.4em;
-        background-color: $b4;
-      }
-    }
+  }
+  button {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    color: $alabaster;
+    font-weight: 500;
+    letter-spacing: 2px;
+    font-size: 0.7em;
+    padding: 0.2em 0.6em;
+    margin: 0.4em;
+    border: none;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+    background-color: $b1;
   }
 }
 @media screen and (max-width: 768px) {
-  #buttons {
-    width: 100vw !important;
-    flex-direction: column !important;
-    height: 5em;
+  img {
+    transform: scale(0.4);
   }
 }
 </style>

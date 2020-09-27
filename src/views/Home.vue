@@ -1,10 +1,10 @@
 <template>
   <div class="home">
     <div id="links">
-      <div class="link">
+      <div class="link" id="link1">
         <router-link to="/demo1">Demo 1</router-link>
       </div>
-      <div class="link">
+      <div class="link" id="link2">
         <router-link to="/demo2">Demo 2</router-link>
       </div>
     </div>
@@ -13,8 +13,9 @@
 
 <script>
 import { gsap, Cubic } from "gsap";
+
 // eslint-disable-next-line
-window.addEventListener("load", function(event) {
+window.addEventListener("DOMContentLoaded", function(event) {
   gsap.fromTo(
     ".link",
     { scale: 0, opacity: 0 },

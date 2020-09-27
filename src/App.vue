@@ -40,7 +40,9 @@ body {
     height: 1em;
     font-size: 0.8em;
     a {
+      transition: all 1s ease-out;
       margin: 1em;
+      padding: 0.1em 0.2em;
       font-weight: 300;
       color: $vue-gray;
       text-decoration: none;
