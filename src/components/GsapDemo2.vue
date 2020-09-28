@@ -40,6 +40,7 @@ export default {
       const splittedTagline = new SplitTextJS(tagline);
       const tag = splittedTagline.chars;
       gsap.from(tag, {
+        delay: 1,
         y: -80,
         opacity: 0,
         ease: Power3.easeInOut,
