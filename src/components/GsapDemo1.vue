@@ -4,18 +4,18 @@
   <div id="container">
     <div id="frame">
       <div id="picsum" class="grid">
-        <img class="gsap1" src="https://picsum.photos/150/?random=1" />
-        <img class="gsap1" src="https://picsum.photos/150/?random=2" />
-        <img class="gsap1" src="https://picsum.photos/150/?random=3" />
-        <img class="gsap1" src="https://picsum.photos/150/?random=4" />
-        <img class="gsap1" src="https://picsum.photos/150/?random=5" />
-        <img class="gsap1" src="https://picsum.photos/150/?random=6" />
-        <img class="gsap1" src="https://picsum.photos/150/?random=7" />
-        <img class="gsap1" src="https://picsum.photos/150/?random=8" />
-        <img class="gsap1" src="https://picsum.photos/150/?random=9" />
-        <img class="gsap1" src="https://picsum.photos/150/?random=10" />
-        <img class="gsap1" src="https://picsum.photos/150/?random=11" />
-        <img class="gsap1" src="https://picsum.photos/150/?random=12" />
+        <img class="gsap1" src="https://picsum.photos/120/?random=1" />
+        <img class="gsap1" src="https://picsum.photos/120/?random=2" />
+        <img class="gsap1" src="https://picsum.photos/120/?random=3" />
+        <img class="gsap1" src="https://picsum.photos/120/?random=4" />
+        <img class="gsap1" src="https://picsum.photos/120/?random=5" />
+        <img class="gsap1" src="https://picsum.photos/120/?random=6" />
+        <img class="gsap1" src="https://picsum.photos/120/?random=7" />
+        <img class="gsap1" src="https://picsum.photos/120/?random=8" />
+        <img class="gsap1" src="https://picsum.photos/120/?random=9" />
+        <img class="gsap1" src="https://picsum.photos/120/?random=10" />
+        <img class="gsap1" src="https://picsum.photos/120/?random=11" />
+        <img class="gsap1" src="https://picsum.photos/120/?random=12" />
       </div>
 
       <div id="right">
@@ -25,12 +25,13 @@
           <div class="circle" id="c3"></div>
         </div>
         <div id="text">
-          <p>this fab gsap and picsum doodle lorem hipsum kombucha whatever, schlitz humblebrag selfies wolf snackwave shabby chic. Sartorial synth vexillologist fanny pack adaptogen dreamcatcher pinterest.</p>
+          <p>this fab gsap and picsum doodle lorem hipsum kombucha whatever, schlitz humblebrag selfies wolf snackwave shabby chic. Sartorial synth vexillologist fanny pack adaptogen dreamcatcher.</p>
         </div>
         <hr />
       </div>
     </div>
     <button v-on:click="start">go!</button>
+    <p id="mobile-note">sorry no mobile view yet</p>
   </div>
 </template>
 
@@ -122,20 +123,19 @@ export default {
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
     display: flex;
     align-items: flex-start;
-    // margin: 2em 1em;
   }
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     grid-gap: 0.3em;
     row-gap: 0.5em;
     width: 100%;
-    max-width: 50vw;
-    margin: 0 auto;
+    max-width: 600px;
+    margin: auto;
     img {
       border-radius: 3px;
-      box-shadow: 0 0 5px #929094;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
     }
   }
 
@@ -157,7 +157,7 @@ export default {
     .circle {
       height: 2em;
       width: 2em;
-      box-shadow: 0 0 5px #929094;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
       border-radius: 50%;
       display: inline-block;
       margin: 0.6em;
@@ -186,9 +186,23 @@ export default {
     background-color: $b1;
   }
 }
+
+#mobile-note {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
-  img {
-    transform: scale(0.4);
+  #frame {
+    background-color: $apple-gray;
+    #picsum {
+      display: none;
+    }
+    #right {
+      display: none;
+    }
+  }
+  #mobile-note {
+    display: block;
   }
 }
 </style>

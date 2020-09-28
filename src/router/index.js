@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import Demo1 from "../views/Demo1.vue";
 import Demo2 from "../views/Demo2.vue";
 import Demo3 from "../views/Demo3.vue";
+import Demo4 from "../views/Demo4.vue";
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,12 @@ const routes = [
     name: Demo3,
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Demo3.vue")
+  },
+  {
+    path: "/demo4",
+    name: Demo4,
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Demo4.vue")
   }
 ];
 

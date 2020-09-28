@@ -7,7 +7,8 @@
       <router-link to="/">Home</router-link>|
       <router-link to="/demo1">Demo 1</router-link>|
       <router-link to="/demo2">Demo 2</router-link>|
-      <router-link to="/demo3">Demo 3</router-link>
+      <router-link to="/demo3">Demo 3</router-link>|
+      <router-link to="/demo4">Demo 4</router-link>
     </div>
   </div>
 </template>
@@ -70,6 +71,13 @@ body {
 @media screen and (max-width: 768px) {
   #app {
     font-size: 1.3em;
+    #footer {
+      font-size: 0.6em;
+      a {
+        margin: 0.5em;
+        padding: 0.1em;
+      }
+    }
   }
 }
 </style>
