@@ -8,7 +8,8 @@
       <router-link to="/demo1">Demo 1</router-link>|
       <router-link to="/demo2">Demo 2</router-link>|
       <router-link to="/demo3">Demo 3</router-link>|
-      <router-link to="/demo4">Demo 4</router-link>
+      <router-link to="/demo4">Demo 4</router-link>|
+      <router-link to="/demo5">Soon</router-link>
     </div>
   </div>
 </template>
@@ -19,6 +20,7 @@ html,
 body {
   height: 100%;
   margin: 0;
+  overflow: hidden;
 }
 #app {
   font-family: Mali, Avenir, Helvetica, Arial, sans-serif;

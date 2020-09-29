@@ -10,6 +10,9 @@
       <div class="link" id="link3">
         <router-link to="/demo3">Demo 3</router-link>
       </div>
+      <div class="link" id="link4">
+        <router-link to="/demo4">Demo 4</router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -77,6 +80,14 @@ export default {
         background-color: $b2;
         &:hover {
           background-color: $b2-hov;
+        }
+      }
+    }
+    &:nth-child(4) {
+      a {
+        background-color: $b3;
+        &:hover {
+          background-color: $b3-hov;
         }
       }
     }
