@@ -23,7 +23,7 @@ window.addEventListener("load", function(event) {
 });
 
 export default {
-  name: "GsapDemo4",
+  name: "GsapDemo2",
   methods: {
     start: function() {
       gsap.set("#intro", { opacity: 1 });

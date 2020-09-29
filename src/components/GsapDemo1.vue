@@ -71,8 +71,7 @@ window.addEventListener("load", function(event) {
   });
 });
 export default {
-  name: "GsapDemo2",
-
+  name: "GsapDemo1",
   methods: {
     start: function() {
       gsap.from(".gsap1", {
