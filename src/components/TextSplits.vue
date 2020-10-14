@@ -7,7 +7,7 @@
       <h2 id="tagline">Authentic charcoal lorem hipsum unicorn kombucha.</h2>
     </div>
     <div id="buttons">
-      <button v-on:click="start">show me!</button>
+      <button v-on:click="start">go again!</button>
     </div>
   </div>
 </template>
@@ -16,14 +16,13 @@
 import { gsap, Power3 } from "gsap";
 import SplitTextJS from "split-text-js";
 
-// eslint-disable-next-line
-window.addEventListener("load", function(event) {
-  gsap.set("#intro", { opacity: 0 });
-  gsap.set("#tagline", { opacity: 0 });
-});
-
 export default {
-  name: "GsapDemo2",
+  name: "TextSplits",
+  mounted: function() {
+    gsap.set("#intro", { opacity: 0 });
+    gsap.set("#tagline", { opacity: 0 });
+    this.start();
+  },
   methods: {
     start: function() {
       gsap.set("#intro", { opacity: 1 });
@@ -62,29 +61,13 @@ export default {
     height: 60vh;
     border: 1px solid $vue-gray;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
-
+    color: $alabaster;
     h1 {
       font-weight: 200;
     }
     h2 {
       font-size: 1em;
       font-weight: 100;
-    }
-  }
-
-  button {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    color: $alabaster;
-    font-weight: 500;
-    letter-spacing: 2px;
-    font-size: 0.7em;
-    padding: 0.2em 0.6em;
-    margin: 0.4em;
-    border: none;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
-    cursor: pointer;
-    &:nth-child(1) {
-      background-color: $b1;
     }
   }
 }

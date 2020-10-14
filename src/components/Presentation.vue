@@ -39,9 +39,8 @@
       </div>
     </div>
     <div id="buttons">
-      <p id="hint">*hint: 1 x start, 3 x next</p>
+      <p id="hint">*hint: 3 x next, then stop</p>
       <div>
-        <button v-on:click="start">start</button>
         <button v-on:click="next">next</button>
         <button v-on:click="stop">stop</button>
       </div>
@@ -68,17 +67,16 @@ const store = new Vuex.Store({
 });
 gsap.set("#area", { opacity: 0 });
 
-// eslint-disable-next-line
-window.addEventListener("load", function(event) {
-  gsap.set("#area", { opacity: 0 });
-  gsap.set("#item1", { opacity: 0 });
-  gsap.set("#item2", { opacity: 0 });
-  gsap.set("#item3", { opacity: 0 });
-  console.log("init");
-});
 export default {
-  name: "GsapDemo3",
+  name: "Presentation",
   store,
+  mounted: function() {
+    gsap.set("#area", { opacity: 0 });
+    gsap.set("#item1", { opacity: 0 });
+    gsap.set("#item2", { opacity: 0 });
+    gsap.set("#item3", { opacity: 0 });
+    this.start();
+  },
   methods: {
     start: function() {
       gsap.set("#area", { opacity: 0 });
@@ -114,6 +112,9 @@ export default {
         console.log("maxed steps! stopping");
         this.stop();
         return;
+      }
+      if (store.state.curSteps == 0) {
+        this.start();
       }
       if (store.state.started) {
         let item1 = document.getElementById("item1");
@@ -243,6 +244,9 @@ export default {
 @import "@/styles/colors.scss";
 #container {
   font-family: Avenir, Helvetica, Arial, sans-serif;
+  hr {
+    border-top: 1px solid $text;
+  }
   #frame {
     padding: 1.5em;
     margin: 0 auto;
@@ -269,7 +273,6 @@ export default {
     align-items: center;
     font-size: 1em;
     button {
-      font-family: Avenir, Helvetica, Arial, sans-serif;
       color: $alabaster;
       font-weight: 500;
       letter-spacing: 2px;
@@ -280,13 +283,10 @@ export default {
       box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
       cursor: pointer;
       &:nth-child(1) {
-        background-color: $b1;
+        background-color: $go-btn;
       }
       &:nth-child(2) {
         background-color: $b2;
-      }
-      &:nth-child(3) {
-        background-color: $b3;
       }
     }
     #restart {

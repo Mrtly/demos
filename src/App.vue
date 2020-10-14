@@ -4,7 +4,7 @@
       <router-view id="flex1" />
     </transition>
     <div id="footer">
-      <router-link to="/">Home</router-link>|
+      <router-link to="/">home</router-link>|
       <router-link to="/demo1">pics</router-link>|
       <router-link to="/demo2">text</router-link>|
       <router-link to="/demo3">explosion</router-link>|
@@ -25,7 +25,7 @@ body {
 #app {
   font-family: Mali, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 100;
-  color: $vue-text;
+  color: $text;
   background-color: $bkg-col;
   font-size: 1.8em;
   display: flex;
@@ -47,11 +47,15 @@ body {
       transition: all 1s ease-out;
       margin: 1em;
       padding: 0.1em 0.2em;
-      font-weight: 300;
+      font-weight: 400;
       color: $text;
       text-decoration: none;
       &.router-link-exact-active {
-        color: $b4;
+        color: $active;
+        &::before,
+        &::after {
+          content: " ◦ ";
+        }
       }
     }
     img {
@@ -68,6 +72,19 @@ body {
 .slide-enter,
 .slide-leave-to {
   opacity: 0;
+}
+button {
+  font-family: Mali, Avenir, Helvetica, Arial, sans-serif;
+  color: $alabaster;
+  font-weight: 500;
+  letter-spacing: 2px;
+  font-size: 0.7em;
+  padding: 0.3em 0.7em;
+  margin: 0.4em;
+  border: none;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  background-color: $go-btn;
 }
 
 @media screen and (max-width: 768px) {

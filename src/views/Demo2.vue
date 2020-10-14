@@ -1,16 +1,16 @@
 <template>
   <div>
-    <GsapDemo2 />
+    <TextSplits />
   </div>
 </template>
 
 <script>
-import GsapDemo2 from "@/components/GsapDemo2.vue";
+import TextSplits from "@/components/TextSplits.vue";
 
 export default {
   name: "Demo2",
   components: {
-    GsapDemo2
+    TextSplits
   }
 };
 </script>

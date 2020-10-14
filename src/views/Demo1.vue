@@ -1,16 +1,16 @@
 <template>
   <div>
-    <GsapDemo1 />
+    <Staggers />
   </div>
 </template>
 
 <script>
-import GsapDemo1 from "@/components/GsapDemo1.vue";
+import Staggers from "@/components/Staggers.vue";
 
 export default {
   name: "Demo1",
   components: {
-    GsapDemo1
+    Staggers
   }
 };
 </script>

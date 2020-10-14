@@ -1,5 +1,3 @@
-
-
 <template>
   <div id="container">
     <div id="frame">
@@ -30,7 +28,7 @@
         <hr />
       </div>
     </div>
-    <button v-on:click="start">go!</button>
+    <button v-on:click="start">go again!</button>
     <p id="mobile-note">sorry no mobile view yet</p>
   </div>
 </template>
@@ -38,40 +36,40 @@
 <script>
 import { gsap } from "gsap";
 
-// eslint-disable-next-line
-window.addEventListener("load", function(event) {
-  gsap.from(".gsap1", {
-    duration: 1,
-    y: -100,
-    opacity: 0,
-    stagger: 0.2,
-    ease: "expo.out"
-  });
-  gsap.from("#text", {
-    delay: 1,
-    duration: 2,
-    y: 100,
-    opacity: 0,
-    ease: "bounce.out"
-  });
-  gsap.from(".circle", {
-    delay: 1.5,
-    duration: 2,
-    y: 50,
-    opacity: 0,
-    stagger: 0.5,
-    ease: "expo.out"
-  });
-  gsap.from("hr", {
-    delay: 2,
-    duration: 2,
-    y: 100,
-    opacity: 0,
-    ease: "expo.out"
-  });
-});
 export default {
-  name: "GsapDemo1",
+  name: "Staggers",
+  mounted: function() {
+    gsap.from(".gsap1", {
+      delay: 1,
+      duration: 1,
+      y: -100,
+      opacity: 0,
+      stagger: 0.2,
+      ease: "expo.out"
+    });
+    gsap.from("#text", {
+      delay: 1,
+      duration: 2,
+      y: 100,
+      opacity: 0,
+      ease: "bounce.out"
+    });
+    gsap.from(".circle", {
+      delay: 1.5,
+      duration: 2,
+      y: 50,
+      opacity: 0,
+      stagger: 0.5,
+      ease: "expo.out"
+    });
+    gsap.from("hr", {
+      delay: 2,
+      duration: 2,
+      y: 100,
+      opacity: 0,
+      ease: "expo.out"
+    });
+  },
   methods: {
     start: function() {
       gsap.from(".gsap1", {
@@ -148,6 +146,7 @@ export default {
     margin-left: 1em;
 
     #text {
+      color: $alabaster;
       font-family: Chelsea Market;
       font-size: 0.8em;
       letter-spacing: 2px;
@@ -170,19 +169,6 @@ export default {
         background-color: #eeba0b;
       }
     }
-  }
-  button {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    color: $alabaster;
-    font-weight: 500;
-    letter-spacing: 2px;
-    font-size: 0.7em;
-    padding: 0.2em 0.6em;
-    margin: 0.4em;
-    border: none;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
-    cursor: pointer;
-    background-color: $b1;
   }
 }
 

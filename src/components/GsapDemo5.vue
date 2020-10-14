@@ -6,35 +6,26 @@
       </div>
     </div>
     <div id="buttons">
-      <button v-on:click="start">soon</button>
+      <button v-on:click="start">ok</button>
     </div>
   </div>
 </template>
 
 <script>
 import { gsap, Bounce } from "gsap";
-import Vue from "vue";
-import Vuex from "vuex";
-Vue.use(Vuex);
-const store = new Vuex.Store({
-  state: {
-    started: false,
-    dur: 2
-  }
-});
-// eslint-disable-next-line
-window.addEventListener("load", function(event) {
-  gsap.set("#comingsoon", { opacity: 0 });
-});
+
 export default {
   name: "GsapDemo5",
-  store,
+  mounted: function() {
+    gsap.set("#comingsoon", { opacity: 0 });
+    this.start();
+  },
   methods: {
     start: function() {
       gsap.set("#comingsoon", { opacity: 1 });
       gsap.fromTo(
         "#comingsoon",
-        { y: "-6em", opacity: 0, scale: 3 },
+        { y: "-9em", opacity: 0 },
         { scale: 1, duration: 1.5, opacity: 1, y: 0, ease: Bounce.easeOut }
       );
     }
@@ -68,19 +59,6 @@ export default {
     justify-content: center;
     align-items: center;
     font-size: 1em;
-    button {
-      font-family: Avenir, Helvetica, Arial, sans-serif;
-      color: $alabaster;
-      font-weight: 500;
-      letter-spacing: 2px;
-      font-size: 0.7em;
-      padding: 0.2em 0.6em;
-      margin: 0.4em;
-      border: none;
-      box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
-      cursor: pointer;
-      background-color: $b1;
-    }
   }
 }
 @media screen and (max-width: 768px) {

@@ -20,11 +20,8 @@
 import { gsap } from "gsap";
 import SplitTextJS from "split-text-js";
 
-// eslint-disable-next-line
-window.addEventListener("load", function(event) {});
-
 export default {
-  name: "GsapDemo4",
+  name: "Explosion",
   methods: {
     random: function(min, max) {
       return Math.random() * (max - min) + min;
@@ -92,31 +89,20 @@ export default {
         font-weight: 300;
         margin: 0 auto;
         letter-spacing: 2px;
-        color: crimson;
+        color: $active;
+        cursor: pointer;
       }
     }
   }
 }
 #arrow {
   animation: 3s fade-in ease;
-  filter: invert(26%) sepia(91%) saturate(7193%) hue-rotate(341deg)
-    brightness(88%) contrast(94%);
+  filter: invert(28%) sepia(99%) saturate(2069%) hue-rotate(162deg)
+    brightness(102%) contrast(90%);
   height: 1.5em;
   animation: bouncey 0.5s ease-in-out alternate infinite;
 }
-button {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  color: $alabaster;
-  font-weight: 500;
-  letter-spacing: 2px;
-  font-size: 0.7em;
-  padding: 0.2em 0.6em;
-  margin: 0.4em;
-  border: none;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
-  cursor: pointer;
-  background-color: $b1;
-}
+
 @keyframes bouncey {
   0% {
     transform: translateY(-100px);
