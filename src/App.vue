@@ -5,11 +5,11 @@
     </transition>
     <div id="footer">
       <router-link to="/">Home</router-link>|
-      <router-link to="/demo1">Demo 1</router-link>|
-      <router-link to="/demo2">Demo 2</router-link>|
-      <router-link to="/demo3">Demo 3</router-link>|
-      <router-link to="/demo4">Demo 4</router-link>|
-      <router-link to="/demo5">Soon</router-link>
+      <router-link to="/demo1">pics</router-link>|
+      <router-link to="/demo2">text</router-link>|
+      <router-link to="/demo3">explosion</router-link>|
+      <router-link to="/demo4">presentation</router-link>|
+      <router-link to="/demo5">more soon</router-link>
     </div>
   </div>
 </template>
@@ -26,7 +26,7 @@ body {
   font-family: Mali, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 100;
   color: $vue-text;
-  background-color: $alabaster;
+  background-color: $bkg-col;
   font-size: 1.8em;
   display: flex;
   min-height: 100vh;
@@ -40,7 +40,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top: 1px solid $vue-gray;
+    border-top: 1px solid $text;
     height: 1em;
     font-size: 0.8em;
     a {
@@ -48,10 +48,10 @@ body {
       margin: 1em;
       padding: 0.1em 0.2em;
       font-weight: 300;
-      color: $vue-gray;
+      color: $text;
       text-decoration: none;
       &.router-link-exact-active {
-        color: $b1;
+        color: $b4;
       }
     }
     img {

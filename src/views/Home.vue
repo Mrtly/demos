@@ -2,42 +2,40 @@
   <div class="home">
     <div id="links">
       <div class="link" id="link1">
-        <router-link to="/demo1">Demo 1</router-link>
+        <router-link to="/demo1">staggered pics</router-link>
       </div>
       <div class="link" id="link2">
-        <router-link to="/demo2">Demo 2</router-link>
+        <router-link to="/demo2">split text</router-link>
       </div>
       <div class="link" id="link3">
-        <router-link to="/demo3">Demo 3</router-link>
+        <router-link to="/demo3">explosion</router-link>
       </div>
       <div class="link" id="link4">
-        <router-link to="/demo4">Demo 4</router-link>
+        <router-link to="/demo4">presentation</router-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { gsap, Cubic } from "gsap";
-
-// eslint-disable-next-line
-window.addEventListener("DOMContentLoaded", function(event) {
-  gsap.fromTo(
-    ".link",
-    { scale: 0, opacity: 0 },
-    {
-      scale: 1,
-      delay: 1,
-      opacity: 1,
-      duration: 1,
-      stagger: 0.2,
-      ease: Cubic.easeOut
-    }
-  );
-});
+import { gsap, Linear } from "gsap";
 
 export default {
-  name: "Home"
+  name: "Home",
+  mounted: function() {
+    gsap.fromTo(
+      ".link",
+      { scale: 0, opacity: 0 },
+      {
+        scale: 1,
+        delay: 0.2,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.3,
+        ease: Linear
+      }
+    );
+  }
 };
 </script>
 
@@ -54,7 +52,7 @@ export default {
     display: inline-block;
     a {
       color: $alabaster;
-      box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
       padding: 0.4em 0.8em;
       text-decoration: none;
       transition: all 0.5s ease-out;
