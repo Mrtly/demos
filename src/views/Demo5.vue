@@ -1,16 +1,16 @@
 <template>
   <div>
-    <GsapDemo5 />
+    <NextDemo />
   </div>
 </template>
 
 <script>
-import GsapDemo5 from "@/components/GsapDemo5.vue";
+import NextDemo from "@/components/NextDemo.vue";
 
 export default {
   name: "Demo5",
   components: {
-    GsapDemo5
+    NextDemo
   }
 };
 </script>
