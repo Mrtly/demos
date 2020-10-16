@@ -37,11 +37,10 @@ body {
   }
   #footer {
     padding: 0.5em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: inline;
     border-top: 1px solid $text;
-    height: 1em;
+    min-height: 1em;
+    margin: 0 auto;
     font-size: 0.8em;
     a {
       transition: all 1s ease-out;
