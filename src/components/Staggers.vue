@@ -186,6 +186,9 @@ export default {
       display: none;
     }
   }
+  button {
+    display: none;
+  }
   #mobile-note {
     display: block;
   }

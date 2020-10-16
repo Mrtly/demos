@@ -5,6 +5,13 @@
       <h1 id="intro">Thundercats</h1>
 
       <h2 id="tagline">Authentic charcoal lorem hipsum unicorn kombucha.</h2>
+
+      <p id="blah">
+        Succulents skateboard iceland live-edge pitchfork aliqua.
+        Vape reprehenderit duis, bicycle rights twee in chia.
+        Portland cloud bread put a bird on it vice sartorial unicorn mlkshk.
+        Coconut tattooed lorem, snackwave put a bird on it mixtape seitan.
+      </p>
     </div>
     <div id="buttons">
       <button v-on:click="start">go again!</button>
@@ -21,26 +28,37 @@ export default {
   mounted: function() {
     gsap.set("#intro", { opacity: 0 });
     gsap.set("#tagline", { opacity: 0 });
+    gsap.set("#blah", { opacity: 0 });
     this.start();
   },
   methods: {
     start: function() {
       gsap.set("#intro", { opacity: 1 });
       gsap.set("#tagline", { opacity: 1 });
-      const text = document.getElementById("intro");
-      const splittedText = new SplitTextJS(text);
+      gsap.set("#blah", { opacity: 1 });
+      const splittedText = new SplitTextJS(document.getElementById("intro"));
       const textChars = splittedText.chars;
       gsap.from(textChars, {
         duration: 0.1,
         visibility: "hidden",
         stagger: 0.06
       });
-      const tagline = document.getElementById("tagline");
-      const splittedTagline = new SplitTextJS(tagline);
+      const splittedTagline = new SplitTextJS(
+        document.getElementById("tagline")
+      );
       const tag = splittedTagline.chars;
       gsap.from(tag, {
         delay: 1,
-        y: -80,
+        x: -100,
+        y: -100,
+        opacity: 0,
+        ease: Power3.easeInOut,
+        stagger: 0.01
+      });
+      const splittedBlah = new SplitTextJS(document.getElementById("blah"));
+      const blablah = splittedBlah.chars;
+      gsap.from(blablah, {
+        delay: 2,
         opacity: 0,
         ease: Power3.easeInOut,
         stagger: 0.01
@@ -68,6 +86,11 @@ export default {
     h2 {
       font-size: 1em;
       font-weight: 100;
+    }
+    p {
+      font-size: 0.7em;
+      font-weight: 300;
+      letter-spacing: 2px;
     }
   }
 }
