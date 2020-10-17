@@ -6,6 +6,7 @@
     <VueLottiePlayer name="octo" loop :animationData="require('@/assets/animationjson.json')" />
     <div id="buttons">
       <button v-on:click="handle">ok</button>
+      <br />
       <button id="homebutton">
         <router-link to="/">home</router-link>
       </button>
@@ -23,9 +24,9 @@ export default {
     VueLottiePlayer
   },
   mounted: function() {
+    gsap.set("#homebutton", { opacity: 0 });
     gsap.set("#comingsoon", { opacity: 0 });
     this.start();
-    gsap.set("#homebutton", { opacity: 0 });
   },
   methods: {
     start: function() {
@@ -33,15 +34,23 @@ export default {
       gsap.fromTo(
         "#comingsoon",
         { y: "-9em", opacity: 0 },
-        { scale: 1, duration: 1.5, opacity: 1, y: 0, ease: Bounce.easeOut }
+        {
+          rotation: -10,
+          scale: 1,
+          duration: 1.5,
+          opacity: 1,
+          y: 0,
+          ease: Bounce.easeOut
+        }
       );
     },
     btn: function() {
-      gsap.to("#homebutton", { opacity: 1, duration: 2 });
+      gsap.to("#homebutton", { opacity: 1, duration: 1 });
     },
     handle: function() {
-      this.start();
       this.btn();
+
+      gsap.to("#comingsoon", 0.1, { x: "+=20", yoyo: true, repeat: 3 });
     }
   }
 };
@@ -60,12 +69,13 @@ export default {
   }
   padding: 1.5em;
   margin: 0 auto;
-
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
 }
 #buttons {
   display: block;
   font-size: 1em;
+  #homebutton {
+    opacity: 0;
+  }
   a {
     text-decoration: none;
     color: azure;

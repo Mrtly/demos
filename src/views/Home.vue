@@ -13,6 +13,9 @@
       <div class="link" id="link4">
         <router-link to="/demo4">presentation</router-link>
       </div>
+      <div class="link" id="link5">
+        <router-link to="/demo5">...</router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -52,7 +55,7 @@ export default {
     display: inline-block;
     a {
       color: $alabaster;
-      box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
       padding: 0.4em 0.8em;
       text-decoration: none;
       transition: all 0.5s ease-out;
@@ -87,6 +90,11 @@ export default {
         &:hover {
           background-color: $b3-hov;
         }
+      }
+    }
+    &:nth-child(5) {
+      a {
+        background-color: #181717;
       }
     }
   }

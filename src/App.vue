@@ -20,13 +20,18 @@ html,
 body {
   height: 100%;
   margin: 0;
-  overflow: hidden;
+  overflow: scroll;
+  background: rgb(27, 11, 21);
+  background: linear-gradient(
+    90deg,
+    rgba(27, 11, 21, 1) 10%,
+    rgba(50, 12, 35, 1) 90%
+  );
 }
 #app {
   font-family: Mali, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 100;
   color: $text;
-  background-color: $bkg-col;
   font-size: 1.8em;
   display: flex;
   min-height: 100vh;
@@ -63,15 +68,6 @@ body {
   }
 }
 
-.slide-enter-active,
-.slide-leave-active {
-  transition: opacity 0.3s;
-}
-
-.slide-enter,
-.slide-leave-to {
-  opacity: 0;
-}
 button {
   font-family: Mali, Avenir, Helvetica, Arial, sans-serif;
   color: $alabaster;
@@ -84,6 +80,21 @@ button {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
   cursor: pointer;
   background-color: $go-btn;
+  transition: all 0.5s ease-out;
+  &:hover {
+    background-color: $go-btn-hov;
+  }
+}
+
+// sliding
+.slide-enter-active,
+.slide-leave-active {
+  transition: opacity 0.3s;
+}
+
+.slide-enter,
+.slide-leave-to {
+  opacity: 0;
 }
 
 @media screen and (max-width: 768px) {

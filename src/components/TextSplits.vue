@@ -1,4 +1,3 @@
-
 <template>
   <div id="container">
     <div id="frame">
@@ -70,6 +69,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/styles/colors.scss";
+
 #container {
   text-align: center;
   #frame {

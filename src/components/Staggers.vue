@@ -25,7 +25,6 @@
         <div id="text">
           <p>this fab gsap and picsum doodle lorem hipsum kombucha whatever, schlitz humblebrag selfies wolf snackwave shabby chic. Sartorial synth vexillologist fanny pack adaptogen dreamcatcher.</p>
         </div>
-        <hr />
       </div>
     </div>
     <button v-on:click="start">go again!</button>
