@@ -14,6 +14,32 @@
   </div>
 </template>
 
+<script>
+let ROOT_PATH = "https://gsap-demos.vercel.app";
+export default {
+  name: "app",
+  data() {
+    return {
+      screenshot: ROOT_PATH + require("./assets/screenshot.png")
+    };
+  },
+  metaInfo() {
+    return {
+      meta: [
+        { property: "og:title", content: "Greensock animation demos in Vue" },
+        { property: "og:site_name", content: "Gsap demos" },
+        { property: "og:type", content: "Gsap demos" },
+        { property: "og:image", content: this.screenshot },
+        {
+          property: "og:description",
+          content: "Greensock animation demos in Vue"
+        }
+      ]
+    };
+  }
+};
+</script>
+
 <style lang="scss">
 @import "@/styles/colors.scss";
 html,
