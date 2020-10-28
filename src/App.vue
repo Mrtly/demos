@@ -48,11 +48,7 @@ body {
   margin: 0;
   overflow: scroll;
   background: rgb(27, 11, 21);
-  background: linear-gradient(
-    90deg,
-    rgba(27, 11, 21, 1) 10%,
-    rgba(50, 12, 35, 1) 90%
-  );
+  background: linear-gradient(90deg, rgb(63, 8, 38) 10%, rgb(103, 13, 29) 90%);
 }
 #app {
   font-family: Mali, Avenir, Helvetica, Arial, sans-serif;
